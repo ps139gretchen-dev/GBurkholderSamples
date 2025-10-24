@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GRETCHEN BURKHOLDER - Video and eLearning Portfolio</title>
+    <title>Your Name - eLearning Portfolio</title>
     <style>
         /* Reset & Base */
         * {
@@ -13,16 +13,37 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e8e8e8;
-            background-image: 
-                linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
-                linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
-                linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
-                linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
-            background-size: 20px 20px;
-            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            background: radial-gradient(circle at center, 
+                rgba(176, 196, 222, 0.7) 0%, 
+                rgba(211, 211, 211, 0.7) 50%, 
+                rgba(70, 130, 180, 0.5) 100%);
             color: #333;
             line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background: radial-gradient(circle at center, 
+                rgba(47, 79, 79, 0.8) 0%, 
+                rgba(105, 105, 105, 0.8) 50%, 
+                rgba(0, 0, 139, 0.6) 100%);
+            color: #e0e0e0;
+        }
+        .dark-mode .elearning-section {
+            background-color: rgba(50, 50, 50, 0.9);
+        }
+        .dark-mode .contact-section {
+            background-color: rgba(50, 50, 50, 0.9);
+        }
+        .dark-mode h1, .dark-mode .subtitle, .dark-mode h2 {
+            color: #b0c4de;
+        }
+        .dark-mode .elearning-links a {
+            color: #b0c4de;
+        }
+        .dark-mode .elearning-links a:hover {
+            color: #e0ffff;
         }
 
         /* Navy Bands */
@@ -48,8 +69,38 @@
         .subtitle {
             text-align: center;
             color: #555;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             font-style: italic;
+        }
+
+        /* Profile Photo */
+        .profile-photo {
+            display: block;
+            margin: 0 auto 30px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid navy;
+        }
+
+        /* Resume Button */
+        .resume-button {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .resume-button a {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: navy;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .resume-button a:hover {
+            background-color: #000080;
         }
 
         /* Video Grid - 3 in a row */
@@ -112,6 +163,73 @@
             text-decoration: underline;
         }
 
+        /* Contact Form */
+        .contact-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        .contact-section h2 {
+            color: navy;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid navy;
+            padding-bottom: 8px;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .contact-form label {
+            font-weight: 500;
+            color: #333;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .contact-form button {
+            padding: 12px;
+            background-color: navy;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #000080;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+        .dark-mode-toggle button {
+            padding: 10px 20px;
+            background-color: navy;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        .dark-mode-toggle button:hover {
+            background-color: #000080;
+        }
+
         /* Copyright */
         .copyright {
             text-align: center;
@@ -125,39 +243,44 @@
         @media (max-width: 768px) {
             h1 { font-size: 1.8rem; }
             .video-grid { grid-template-columns: 1fr; }
+            .profile-photo { width: 120px; height: 120px; }
         }
     </style>
 </head>
 <body>
-
     <!-- Top Navy Band -->
     <div class="navy-band"></div>
 
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+
     <div class="container">
+        <!-- Profile Photo -->
+        <img src="https://via.placeholder.com/150" alt="Your Profile Photo" class="profile-photo">
+
         <h1>Your Name</h1>
         <p class="subtitle">Instructional Designer | eLearning Developer | Educator</p>
 
+        <!-- Resume Download Button -->
+        <div class="resume-button">
+            <a href="path/to/your/resume.pdf" download>Download My Resume</a>
+        </div>
+
         <!-- YouTube Videos Section -->
         <div class="video-grid">
-            <!-- Video 1 -->
             <div class="video-wrapper">
-                <!-- REPLACE WITH YOUR YOUTUBE VIDEO -->
                 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
                         title="Sample Video 1" 
                         allowfullscreen></iframe>
             </div>
-
-            <!-- Video 2 -->
             <div class="video-wrapper">
-                <!-- REPLACE WITH YOUR YOUTUBE VIDEO -->
                 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
                         title="Sample Video 2" 
                         allowfullscreen></iframe>
             </div>
-
-            <!-- Video 3 -->
             <div class="video-wrapper">
-                <!-- REPLACE WITH YOUR YOUTUBE VIDEO -->
                 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
                         title="Sample Video 3" 
                         allowfullscreen></iframe>
@@ -173,7 +296,6 @@
                         Interactive Training Module - Customer Service Skills
                     </a>
                 </li>
-                < Repeating pattern for easy editing -->
                 <li>
                     <a href="https://example.com/course2" target="_blank">
                         Compliance Training - Data Privacy (SCORM)
@@ -184,8 +306,21 @@
                         Soft Skills Workshop - Leadership Essentials
                     </a>
                 </li>
-                <!-- Add more <li> items below as needed -->
             </ul>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="contact-section">
+            <h2>Contact Me</h2>
+            <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
         </section>
     </div>
 
@@ -197,6 +332,10 @@
         &copy; 2025 Your Full Name. All rights reserved. | Portfolio for job applications.
     </div>
 
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
 </body>
 </html>
-
